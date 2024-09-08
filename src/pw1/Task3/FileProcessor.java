@@ -16,10 +16,10 @@ public class FileProcessor implements Runnable {
         while (true) {
             try {
                 File file = queue.take();
-                if (file.getType() == acceptableFileType) {
-                    long delayMs = file.getSize() * 7L;
+                if (file.type() == acceptableFileType) {
+                    long delayMs = file.size() * 7L;
                     Thread.sleep(delayMs);
-                    System.out.println(file.getType().getValue() + " file (" + file.getSize() + " bytes) has been processed, time elapsed: " + delayMs + "ms");
+                    System.out.println(file.type().getValue() + " file (" + file.size() + " bytes) has been processed, time elapsed: " + delayMs + "ms");
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
